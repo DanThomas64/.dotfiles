@@ -2,9 +2,9 @@
 Personal Dotfiles
 
 ## Adding new dotfiles
-`dotfiles status
-dotfiles add .vimrc
-dotfiles commit -m "Add vimrc"`
+`dotfiles status`
+`dotfiles add .vimrc`
+`dotfiles commit -m "Add vimrc"`
 
 Setup environment in a new computer
 Make sure to have git installed, then:

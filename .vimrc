@@ -6,6 +6,7 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 	Plug 'vim-airline/vim-airline-themes'
     Plug 'tribela/vim-transparent'
     Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'gruvbox-community/gruvbox'
     " Startify
     Plug 'mhinz/vim-startify'
 	" Git
@@ -80,7 +81,9 @@ filetype plugin on
 filetype plugin indent on   " allow auto-indenting depending on file type
 
 colorscheme onedark
-"
+highlight Normal guibg=none
+"colorscheme gruvbox
+
 " NerdTree Settings
 "
 " Start NERDTree. If a file is specified, move the cursor to its window.

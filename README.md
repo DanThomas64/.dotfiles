@@ -4,6 +4,8 @@ Personal Dotfiles
 ## Setup as per
 https://fwuensche.medium.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b
 
+https://dev.to/bowmanjd/store-home-directory-config-files-dotfiles-in-git-using-bash-zsh-or-powershell-the-bare-repo-approach-35l3
+
 ## Adding new dotfiles
 `dotfiles status`
 `dotfiles add .vimrc`

@@ -164,7 +164,7 @@
             "intenseTextStyle": "bright",
             "opacity": 100,
             "padding": "20",
-            "startingDirectory": "D:\\Projects",
+            "startingDirectory": "~",
             "useAcrylic": false
         },
         "list": 

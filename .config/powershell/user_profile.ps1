@@ -34,10 +34,6 @@ function Get-RPT {
     gc $a.FullName -Tail 10 -Wait
 }
 
-function Clear-Swap {
-    ls "C:\Users\seneca\AppData\Local\nvim-data\swap" | rm
-}
-
 function Get-Log {
     cls
     $a=gci -Path "$(Get-Location)\*" -Include *.txt ,*.log |sort LastAccessTime -Desc|select -f 1;$host.UI.RawUI.WindowTitle=$a.FullName

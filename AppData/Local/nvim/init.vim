@@ -5,17 +5,12 @@ call plug#begin('~/AppData/Local/nvim/plugged')
     Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
     Plug 'tribela/vim-transparent'
-    Plug 'dracula/vim', { 'as': 'dracula' }
-    Plug 'gruvbox-community/gruvbox'
-    " Startify
-    Plug 'mhinz/vim-startify'
 	" Git
 	Plug 'tpope/vim-fugitive'
 	" File Nav
-    Plug 'nvim-telescope/telescop.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 	Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
-	Plug 'scrooloose/nerdtree'
 	" Editing/Formatting
 	Plug 'godlygeek/tabular'
 	Plug 'jonpas/vim-sqf-syntax'
@@ -25,29 +20,9 @@ call plug#begin('~/AppData/Local/nvim/plugged')
     " TODO Highlighting
     Plug 'nvim-lua/plenary.nvim'
     Plug 'folke/todo-comments.nvim'
+    " Templates
     Plug 'aperezdc/vim-template'
 call plug#end()
-
-" Startify
-let g:startify_custom_header = [
-    \ '',
-    \ '$$$$$$$\                  $$\ $$\      $$\           $$\  $$$$$$\   ',
-    \ '$$  __$$\                 $$ |$$ | $\  $$ |          $$ |$$  __$$\  ',
-    \ '$$ |  $$ | $$$$$$\   $$$$$$$ |$$ |$$$\ $$ | $$$$$$\  $$ |$$ /  \__| ',
-    \ '$$$$$$$\ | \____$$\ $$  __$$ |$$ $$ $$\$$ |$$  __$$\ $$ |$$$$\      ',
-    \ '$$  __$$\  $$$$$$$ |$$ /  $$ |$$$$  _$$$$ |$$ /  $$ |$$ |$$  _|     ',
-    \ '$$ |  $$ |$$  __$$ |$$ |  $$ |$$$  / \$$$ |$$ |  $$ |$$ |$$ |       ',
-    \ '$$$$$$$  |\$$$$$$$ |\$$$$$$$ |$$  /   \$$ |\$$$$$$  |$$ |$$ |       ',
-    \ '\_______/  \_______| \_______|\__/     \__| \______/ \__|\__| ',
-    \ ' ',
-    \ 'Welcome back mother fucker.. :D ',
-    \ ]
-
-let g:startify_bookmarks =  [ 
-    \{'v': 'D:\Projects\.dotfiles\.vim\nvim\init.vim'},
-    \{'p': 'D:\Projects\.dotfiles\powershell\user_profile.ps1'},
-    \]
-
 
 " General Vim Settings
 set nocompatible            " disable compatibility to old-time vi
@@ -84,14 +59,6 @@ colorscheme onedark
 highlight Normal guibg=none
 "colorscheme gruvbox
 
-" NerdTree Settings
-"
-" Start NERDTree. If a file is specified, move the cursor to its window.
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
 lua << EOF
     require("todo-comments").setup {}
 EOF
@@ -105,10 +72,6 @@ nnoremap <Leader><space> :noh<cr>
 " No recommended but needed to stop me fatfingering
 " Pause does not work in Terminal at this time.
 nnoremap <c-z> :u<CR> 
-" NerdTree
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
 " Fzf File search
 let $PATH = "C:\\Program Files\\Git\\usr\\bin;" . $PATH
 nnoremap <silent> <C-f> :Files<CR>
@@ -118,20 +81,23 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
-" Startify
-nnoremap <leader>h :Startify<CR>
 " tabsman
 map <leader>tn :tabnew<cr>
-map <leader>tl :tabnext
-map <leader>th :tabnext
+map <leader>tl :tabnext<cr>
+map <leader>th :tabprevious<cr>
 map <leader>tm :tabmove
 map <leader>tc :tabclose<cr>
 map <leader>to :tabonly<cr>
-
+" Explorer
+nnoremap <leader>h :Ex<CR>
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+" paste no yank
+vnoremap <leader>p "_dP
 " split
 noremap <leader>sv :vsplit<CR>
 noremap <leader>sh :split<CR>
-
 " Move text
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==

@@ -1,0 +1,34 @@
+Applications to install on OS wipe 
+
+# Tools
+
+winget install bitwarden.bitwarden
+winget install github.githubdesktop
+winget install nvidia.broadcast // doesn't work currently.
+winget install nvidia.geforceexperience
+winget install logitech.options
+winget install logitech.ghub
+winget install elgato.streamdeck
+winget install 7zip.7zip
+winget install oracle.javaruntimeenvironment
+
+# Dev
+
+winget install git.git
+winget install vscode
+winget install tortoisesvn.tortoisesvn
+winget install python.python.3
+winget install mongodb.server
+winget install openjs.nodejs.lts
+
+# General
+
+winget install discord.discord
+winget install microsoft.powertoys
+winget install valve.steam
+winget install ubisoft.connect //doesnt work currently.
+winget install TeamSpeakSystems.TeamSpeakClient
+winget install snakefoot.snaketail
+winget install EpicGames.EpicGamesLauncher
+winget install canonical.ubuntu
+winget install obsproject.obsstudio

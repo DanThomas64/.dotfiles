@@ -1,6 +1,6 @@
 # Prompt
 Import-Module posh-git
-oh-my-posh init pwsh --config "D:\Projects\.dotfiles\.omp\.mytheme.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$HOME\.config\omp\.mytheme.omp.json" | Invoke-Expression
 
 # Terminal-Icons
 Import-Module -Name Terminal-Icons

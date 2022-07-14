@@ -14,14 +14,17 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+k' -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Chord 'Ctrl+j' -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function RevertLine
 
+# Variables
+Set-Variable -Name 'vimrc' -Scope Local -Value $HOME\appdata\local\nvim\init.vim
+
 # Fzf
 Import-Module PSFzf
 Set-PSFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadLineChordReverseHistory 'Ctrl+r'
 
 # Alias
 Set-Alias vim nvim
-Set-Alias grep findstr
-Set-Alias ll ls
+Set-Alias ll l
+Set-Alias ls l
 Set-Alias g git
 Set-Alias mkdir New-Dir
 Set-Alias tig 'C:Program Files\Git\usr\bin\tig.exe'
@@ -53,6 +56,9 @@ function New-Dir {
         }
     }
 }
+
+# improve ls
+function l { Get-ChildItem $args -Force }
 
 # Dotfiles
 $DOTFILES = "$HOME\.dotfiles"

@@ -72,10 +72,11 @@ nnoremap <Leader><space> :noh<cr>
 " No recommended but needed to stop me fatfingering
 " Pause does not work in Terminal at this time.
 nnoremap <c-z> :u<CR> 
-" Fzf File search
-let $PATH = "C:\\Program Files\\Git\\usr\\bin;" . $PATH
-nnoremap <silent> <C-f> :Files<CR>
-nnoremap <silent> <Leader>f :Rg<CR>
+" Telescope Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 " Window Navigation with Ctrl-[hjkl]
 noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k

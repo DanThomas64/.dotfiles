@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+DOTFILES="$HOME/.dotfiles"
+
+dotfiles () {
+  git --git-dir="$DOTFILES" --work-tree="$HOME" "$@"
+}

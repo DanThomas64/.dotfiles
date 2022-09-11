@@ -16,6 +16,10 @@ return require("packer").startup(function()
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+    -- Treesitter
+    use("nvim-treesitter/nvim-treesitter", {
+        run = ":TSUpdate"
+    })
     use("folke/tokyonight.nvim")
     -- LSP
     use {
@@ -37,4 +41,5 @@ return require("packer").startup(function()
     use("saadparwaiz1/cmp_luasnip")
     use("rafamadriz/friendly-snippets")
     use("simrat39/symbols-outline.nvim")
+    use("onsails/lspkind.nvim")
 end)

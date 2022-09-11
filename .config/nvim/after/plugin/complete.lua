@@ -5,32 +5,122 @@ local inoremap = Remap.inoremap
 local sumneko_root_path = vim.env.HOME .. "/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
--- Set up nvim-cmp.
-local cmp = require 'cmp'
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
+  return
+end
+
+local snip_status_ok, luasnip = pcall(require, "luasnip")
+if not snip_status_ok then
+  return
+end
+
+local check_backspace = function()
+  local col = vim.fn.col "." - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+end
+
+local ok, lspkind = pcall(require, "lspkind")
+if not ok then
+  return
+end
+
+lspkind.init()
+
+require("luasnip.loaders.from_vscode").lazy_load(
+-- {paths = vim.env.HOME .. ".config/nvim/lua/bad/snippets"}
+)
+
+local opts = {
+    highlight_hovered_item = true,
+    show_guides = true,
+}
+
+require("symbols-outline").setup(opts)
 
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            require('LuaSnip').lsp_expand(args.body) -- For `LuaSnip` users.
+            require('luasnip').lsp_expand(args.body) -- For `LuaSnip` users.
         end,
     },
     window = {
         -- completion = cmp.config.window.bordered(),
         -- documentation = cmp.config.window.bordered(),
     },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-    }),
+    mapping = {
+        ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+        ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<c-y>"] = cmp.mapping(
+          cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+          },
+          { "i", "c" }
+        ),
+
+        ["<c-space>"] = cmp.mapping {
+          i = cmp.mapping.complete(),
+          c = function(
+            _ --[[fallback]]
+          )
+            if cmp.visible() then
+              if not cmp.confirm { select = true } then
+                return
+              end
+            else
+              cmp.complete()
+            end
+          end,
+        },
+
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            elseif check_backspace() then
+                fallback()
+            else
+                fallback()
+            end
+        end, {
+            "i",
+            "s",
+        }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, {
+            "i",
+            "s",
+        }),
+    },
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
     }, {
         { name = 'buffer' },
-    })
+    }),
+    formatting = {
+        format = lspkind.cmp_format {
+            with_text = true,
+            menu = {
+                buffer = "[buf]",
+                nvim_lsp = "[LSP]",
+                nvim_lua = "[api]",
+                path = "[path]",
+                luasnip = "[snip]",
+                gh_issues = "[issues]",
+                tn = "[TabNine]",
+            },
+        },
+    },
 })
 
 local function config(_config)
@@ -62,6 +152,8 @@ local function config(_config)
             end)
             nnoremap("<Leader>f", function() vim.lsp.buf.formatting() end)
             inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
+            nnoremap("[x", function() vim.diagnostic.goto_next() end)
+			nnoremap("]x", function() vim.diagnostic.goto_prev() end)
         end,
     }, _config or {})
 end
@@ -87,13 +179,14 @@ cmp.setup.cmdline(':', {
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['pylsp'].setup {
-    config()
-}
-require('lspconfig')['marksman'].setup {
-    config()
-}
+require('lspconfig')['pylsp'].setup(config({
+    capabilities = capabilities,
+}))
+require('lspconfig')['marksman'].setup (config({
+    capabilities = capabilities,
+}))
 require("lspconfig")['sumneko_lua'].setup(config({
+    capabilities = capabilities,
     cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
     settings = {
         Lua = {
@@ -117,22 +210,28 @@ require("lspconfig")['sumneko_lua'].setup(config({
         },
     },
 }))
-require('lspconfig')['rust_analyzer'].setup(
-    config({
-        settings = {
-            cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-            ["rust-analyzer"] = {},
-        }
-    })
-)
-
-local opts = {
-    highlight_hovered_item = true,
-    show_guides = true,
-}
-
-require("symbols-outline").setup(opts)
-
-require("luasnip.loaders.from_vscode").lazy_load(
--- {paths = vim.env.HOME .. ".config/nvim/lua/bad/snippets"}
-)
+require('lspconfig')['rust_analyzer'].setup(config({
+    capabilities = capabilities,
+    settings = {
+        cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+        ["rust-analyzer"] = {
+            assist = {
+                importEnforceGranularity = true,
+                importPrefix = "crate"
+            },
+            cargo = {
+                allFeatures = true
+            },
+            checkOnSave = {
+                -- default: `cargo check`
+                command = "clippy"
+            },
+        },
+        inlayHints = {
+            lifetimeElisionHints = {
+                enable = true,
+                useParameterNames = true
+            },
+        },
+    }
+}))

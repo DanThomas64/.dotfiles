@@ -10,12 +10,12 @@ Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -BellStyle None
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineKeyHandler -Chord 'Ctrl+k' -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Chord 'Ctrl+j' -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Chord 'Ctrl+p' -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Chord 'Ctrl+n' -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function RevertLine
 
 # Variables
-Set-Variable -Name 'vimrc' -Scope Local -Value $HOME\appdata\local\nvim\init.vim
+Set-Variable -Name 'vimrc' -Scope Local -Value $HOME\appdata\local\nvim\init.lua
 
 # Fzf
 Import-Module PSFzf

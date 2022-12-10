@@ -1,6 +1,6 @@
 # Prompt
 Import-Module posh-git
-oh-my-posh init pwsh --config "$HOME\.config\omp\.mytheme.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "C:\Users\dan\scoop\apps\oh-my-posh\current\themes\sim-web.omp.json" | Invoke-Expression
 
 # Terminal-Icons
 Import-Module -Name Terminal-Icons
@@ -23,8 +23,11 @@ Set-PSFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadLineChordReverseHistory
 
 # Alias
 Set-Alias vim nvim
+Set-Alias v nvim
 Set-Alias ll l
 Set-Alias ls l
+Set-Alias la l
+Set-Alias lg lazygit
 Set-Alias g git
 Set-Alias mkdir New-Dir
 Set-Alias tig 'C:Program Files\Git\usr\bin\tig.exe'

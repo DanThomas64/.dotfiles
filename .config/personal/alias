@@ -5,3 +5,6 @@ alias vims="NVIM_LISTEN_ADDRESS=/tmp/nvim $VIM"
 alias la='exa -lar --icons'
 alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
 alias project 'cd ~/project'
+alias v=vim
+alias kbq='sudo setxkbmap -layout us'
+alias kbd='sudo setxkbmap -layout dvorak'

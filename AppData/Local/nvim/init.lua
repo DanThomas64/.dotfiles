@@ -183,3 +183,10 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "[d]iagnostics next
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "[d]iagnostics previous item" })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Diagnostics open float" })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Placeholder" })
+-- Bracket/quote completion
+vim.keymap.set('i', '(<CR>', '(<CR>)<C-o>O')
+vim.keymap.set('i', '{<CR>', '{<CR>}<C-o>O')
+vim.keymap.set('i', '[<CR>', '[<CR>]<C-o>O')
+vim.keymap.set('i', '"', '""<Esc>ha')
+vim.keymap.set('i', "'", "''<Esc>ha")
+vim.keymap.set('i', '`', '``<Esc>ha')

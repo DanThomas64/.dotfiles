@@ -65,9 +65,15 @@ function l { Get-ChildItem $args -Force }
 
 # Dotfiles
 $DOTFILES = "$HOME\.dotfiles"
+# nvim init
+$NVIM_INIT = "$HOME\.nvim"
 
 function dotfiles {
   git --git-dir="$DOTFILES" --work-tree="$HOME" @Args
+}
+
+function nvim_init {
+  git --git-dir="$NVIM_INIT" --work-tree="$HOME\appdata\local\nvim" @Args
 }
 
 function dotfiles-restore {

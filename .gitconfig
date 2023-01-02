@@ -4,8 +4,8 @@
 	process = git-lfs filter-process
 	required = true
 [user]
-	name = DanThomas64
-    email = danstevethomas@gmail.com
+	name = Dan Thomas [BadWolf]
+	email = 5899996+DanThomas64@users.noreply.github.com
     signkey = EE3F4BB3CB6F8B89j
 [safe]
 	directory = D:/Projects/bw_wgsm

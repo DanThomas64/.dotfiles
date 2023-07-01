@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+gsettings  set  org.gnome.desktop.peripherals.mouse  accel-profile  flat
+

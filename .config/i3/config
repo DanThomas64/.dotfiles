@@ -215,4 +215,4 @@ assign [class="discord"] 3
 
 exec alacritty --class fullscreen
 exec firefox
-exec Discord
+exec discord

@@ -6,3 +6,9 @@ alias la='exa -lar --icons'
 alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
 alias project 'cd ~/project'
 alias v=vim
+alias vimrc="$VIM $HOME/.config/nvim/"
+
+SQF_PATH_ROOT_DIR="$HOME/sqf-language-rework"
+if [ -d "$SQF_PATH_ROOT_DIR" ]; then
+	export SQF_PATH="$SQF_PATH_ROOT_DIR/.out/extension/server/src/server.js"
+fi

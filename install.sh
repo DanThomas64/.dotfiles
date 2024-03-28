@@ -31,7 +31,7 @@ gh auth login -w
 # Download and deploy nvim config
 VIMRC="$HOME/.config/nvim"
 
-if [[ ! -d "$VIMRC" ]]; then
+if [[ -d "$VIMRC" ]]; then
 	cp "$VIMRC" "${VIMRC}_backup"
 fi
 

@@ -3,13 +3,29 @@
 DOTFILES="$HOME/.dotfiles"
 URL="https://github.com/DanThomas64/.dotfiles/"
 
-dotfiles() {
-	git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" "$@"
-}
+declare -a apps=(
+	nvim
+	fzf
+	treesitter
+	zsh
+	exa
+	bat
+	stow
+)
 
-git clone -b linux --bare $URL $DOTFILES
-dotfiles config --local status.showUntrackedFiles no
-dotfiles checkout || echo -e 'Deal with conflicting files, then run (possibly with -f flag if you are OK with overwriting)\ndtf checkout'
+for app in "${apps[@]}"; do
+	yay -S ${app[@]}
+done
+
+git clone $URL $DOTFILES
+
+cd $DOTFILES
+
+stow . --adopt
+
+git restore .
+
+cd $HOME
 
 # Also should be used to install ZSH and OH-MY-ZSH exa neovim
 # nodejs, perl, rust,
@@ -37,19 +53,8 @@ done
 find "$fonts_dir" -name '*Windows Compatible*' -delete
 
 fc-cache -fv
+fc-match "Hack Nerd Font Mono" -a
 
-declare -a apps=(
-	nvim
-	fzf
-	treesitter
-	zsh
-	ohmyzsh
-	exa
-	bat
-)
-
-for app in "${apps[@]}"; do
-	apt install -y ${app[@]}
-done
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 sudo chsh -s /usr/bin/zsh $USERNAME

@@ -32,9 +32,13 @@ gh auth login -w
 VIMRC="$HOME/.config/nvim"
 
 if [[ -d "$VIMRC" ]]; then
+	echo "Found old neovim config"
+	echo "Checking for old backup"
 	if [[ -d "${VIMRC}_backup" ]]; then
+		echo "Found old backup, removing it"
 		rm -rf "${VIMRC}_backup"
 	fi
+	echo "Moving the current config to a backup folder"
 	mv "$VIMRC" "${VIMRC}_backup"
 fi
 

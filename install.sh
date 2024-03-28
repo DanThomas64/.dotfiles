@@ -61,7 +61,6 @@ done
 find "$fonts_dir" -name '*Windows Compatible*' -delete
 
 fc-cache -fv
-fc-match "Hack Nerd Font Mono" -a
 
 # Install oh-my-zsh and set zsh as default
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --keep-zshrc

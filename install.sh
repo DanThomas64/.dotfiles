@@ -35,7 +35,7 @@ if [[ -d "$VIMRC" ]]; then
 	if [[ -d "${VIMRC}_backup" ]]; then
 		rm -rf "${VIMRC}_backup"
 	fi
-	cp -r "$VIMRC" "${VIMRC}_backup"
+	mv "$VIMRC" "${VIMRC}_backup"
 fi
 
 gh repo clone "DanThomas64/nvim.init" $VIMRC

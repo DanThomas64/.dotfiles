@@ -4,7 +4,7 @@ DOTFILES="$HOME/.dotfiles"
 URL="https://github.com/DanThomas64/.dotfiles/"
 
 declare -a apps=(
-	nvim
+	neovim
 	fzf
 	treesitter
 	zsh
@@ -14,7 +14,7 @@ declare -a apps=(
 )
 
 for app in "${apps[@]}"; do
-	yay -S ${app[@]}
+	yay -S ${app[@]} --noconfirm
 done
 
 git clone $URL $DOTFILES

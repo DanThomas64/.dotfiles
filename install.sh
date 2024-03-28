@@ -32,7 +32,10 @@ gh auth login -w
 VIMRC="$HOME/.config/nvim"
 
 if [[ -d "$VIMRC" ]]; then
-	cp "$VIMRC" "${VIMRC}_backup"
+	if [[ -d "${VIMRC}_backup" ]]; then
+		rm -rf "${VIMRC}_backup"
+	fi
+	cp -r "$VIMRC" "${VIMRC}_backup"
 fi
 
 gh repo clone "DanThomas64/nvim.init" $VIMRC

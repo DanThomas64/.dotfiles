@@ -74,6 +74,8 @@ else
 fi
 
 # Install oh-my-zsh and set zsh as default
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
+if [[ ! -d "${HOME}/.oh-my-zsh" ]]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
+fi
 
 sudo chsh -s /usr/bin/zsh $USERNAME

@@ -35,7 +35,7 @@ if [[ -d "$VIMRC" ]]; then
 	cp "$VIMRC" "${VIMRC}_backup"
 fi
 
-gh repo clone "DanThomas64/nvim" $VIMRC
+gh repo clone "DanThomas64/nvim.init" $VIMRC
 
 # Install hack Font
 declare -a fonts=(
@@ -67,5 +67,6 @@ else
 if
 
 # Install oh-my-zsh and set zsh as default
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --keep-zshrc
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
+
 sudo chsh -s /usr/bin/zsh $USERNAME

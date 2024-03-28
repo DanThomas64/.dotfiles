@@ -77,3 +77,11 @@ fi
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
 
 sudo chsh -s /usr/bin/zsh $USERNAME
+
+# MISC 
+
+# Create Screenshot Folder
+
+if [[ ! -d "${HOME}/Pictures/screenshots" ]]; then
+	mkdir "${HOME}/Pictures/screenshots"
+fi

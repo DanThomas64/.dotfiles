@@ -10,6 +10,7 @@ declare -a apps=(
 	bat
 	stow
 	github-cli
+	zoxide
 )
 
 for app in "${apps[@]}"; do

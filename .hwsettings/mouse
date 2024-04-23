@@ -2,4 +2,4 @@
 
 gsettings  set  org.gnome.desktop.peripherals.mouse  accel-profile  flat
 
-xinput --set-prop 20 200 1.2 0 0 0 1 0 0 0 1
+# xinput --set-prop 20 200 1.2 0 0 0 1 0 0 0 1

@@ -55,9 +55,7 @@ fi
 gh repo clone "DanThomas64/nvim.init" $VIMRC
 
 # Install hack Font
-if fc-match "Hack Nerd Font Mono" &>/dev/null; then
-    echo "Hack Nerd Font Mono is already installed."
-else
+if fc-match "Hack" &>/dev/null; then
 	declare -a fonts=(
 		Hack
 	)
@@ -81,6 +79,8 @@ else
 	find "$fonts_dir" -name '*Windows Compatible*' -delete
 
 	fc-cache -fv
+else
+    echo "Hack is already installed."
 fi
 
 # Install oh-my-zsh and set zsh as default

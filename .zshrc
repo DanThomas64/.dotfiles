@@ -102,7 +102,3 @@ source $ZSH/oh-my-zsh.sh
 
 # source /usr/share/nvm/init-nvm.sh
 source $HOME/.profile
-
-eval "$(zoxide init --cmd cd zsh)"
-
-eval $(thefuck --alias)

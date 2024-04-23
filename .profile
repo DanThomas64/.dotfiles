@@ -20,3 +20,6 @@ export DOTFILES=$HOME/.dotfiles
 
 export LD_LIBRARY_PATH=$HOME/.local/lib
 
+eval "$(zoxide init --cmd cd zsh)"
+
+eval $(thefuck --alias)

@@ -36,7 +36,7 @@ bindsym $mod+Shift+Tab workspace prev
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec "i3-sensible-terminal"
+bindsym $mod+Return exec "alacritty"
 
 # kill focused window
 bindsym $mod+q kill
@@ -159,7 +159,7 @@ exec --no-startup-id /usr/bin/dunst
 # exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 # Autostart apps as you like
-exec --no-startup-id sleep 1 && xfce4-terminal
+exec --no-startup-id sleep 1 && alacritty
 exec --no-startup-id sleep 2 && firefox
 exec --no-startup-id sleep 3 && Thunar
 exec --no-startup-id sleep 4 && discord

@@ -2,6 +2,7 @@
 
 # Install required apps
 declare -a apps=(
+	alacritty
 	neovim
 	fzf
 	treesitter
@@ -61,7 +62,7 @@ else
 		Hack
 	)
 
-	version='2.2.2'
+	version='3.2.1'
 	fonts_dir="${HOME}/.local/share/fonts"
 
 	if [[ ! -d "$fonts_dir" ]]; then

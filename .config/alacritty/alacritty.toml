@@ -28,3 +28,9 @@ style = "Medium Italic"
 [font.normal]
 family = "Hack Nerd Font Mono"
 style = "Medium"
+
+[keyboard]
+bindings = [
+  { key = "Equals", mods = "Control", action = "IncreaseFontSize" },
+  { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+]

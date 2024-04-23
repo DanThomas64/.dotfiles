@@ -100,13 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias vim="nvim"
-alias la='exa -lar --icons'
-alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
-alias v=vim
-alias vimrc="$VIM $HOME/.config/nvim/"
-alias lg=lazygit
-alias cat=bat
 source /usr/share/nvm/init-nvm.sh
+source $HOME/.profile
 
 eval "$(zoxide init --cmd cd zsh)"
+
+eval $(thefuck --alias)

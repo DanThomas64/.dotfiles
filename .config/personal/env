@@ -11,3 +11,5 @@ addToPathFront() {
         export PATH=$1:$PATH
     fi
 }
+
+# . "$HOME/.cargo/env"

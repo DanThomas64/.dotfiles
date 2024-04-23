@@ -24,3 +24,5 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 unset rc
+
+source "$HOME/.profile"

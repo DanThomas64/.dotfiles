@@ -1,3 +1,5 @@
+# User specific environment and startup programs
+
 export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
 export GIT_EDITOR=$vim
@@ -16,4 +18,5 @@ done
 export GPG_TTY=$(tty)
 export DOTFILES=$HOME/.dotfiles
 
-. "$HOME/.cargo/env"
+export LD_LIBRARY_PATH=$HOME/.local/lib
+

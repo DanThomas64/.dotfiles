@@ -10,6 +10,15 @@ declare -a apps=(
 	bat
 	stow
 	github-cli
+	zoxide
+	btop
+	discord
+	remmina
+	freerdp
+	tree
+	tldr-page
+	thefuck
+	dust-git
 )
 
 for app in "${apps[@]}"; do

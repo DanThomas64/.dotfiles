@@ -88,6 +88,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 sudo chsh -s /usr/bin/zsh $USERNAME
 
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+
 # MISC 
 
 # Create Screenshot Folder

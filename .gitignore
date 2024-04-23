@@ -16,3 +16,4 @@
 .local/bin/pbodeps
 .local/bin/queryaddons
 .local/bin/rapify
+.config/tmux/plugins

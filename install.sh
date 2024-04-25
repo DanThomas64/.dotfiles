@@ -20,6 +20,7 @@ declare -a apps=(
 	tldr-page
 	thefuck
 	dust-git
+	tmux
 )
 
 for app in "${apps[@]}"; do
@@ -93,7 +94,11 @@ git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 # MISC 
 
 # Create Screenshot Folder
-
 if [[ ! -d "${HOME}/Pictures/screenshots" ]]; then
 	mkdir "${HOME}/Pictures/screenshots"
+fi
+
+# Create Project Folder
+if [[ ! -d "${HOME}/project" ]]; then
+	mkdir "${HOME}/project"
 fi

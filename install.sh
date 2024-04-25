@@ -21,6 +21,7 @@ declare -a apps=(
 	thefuck
 	dust-git
 	tmux
+ 	youtube-music-bin
 )
 
 for app in "${apps[@]}"; do

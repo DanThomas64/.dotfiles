@@ -159,7 +159,7 @@ exec --no-startup-id /usr/bin/dunst
 
 # Autostart apps as you like
 exec --no-startup-id sleep 1 && alacritty
-exec --no-startup-id sleep 2 && Chrome
+exec --no-startup-id sleep 2 && google-chrome-stable
 exec --no-startup-id sleep 3 && Thunar
 exec --no-startup-id sleep 4 && discord
 exec --no-startup-id sleep 9 &&	youtube-music

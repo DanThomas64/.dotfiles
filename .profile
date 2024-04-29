@@ -25,3 +25,5 @@ eval "$(zoxide init --cmd cd zsh)"
 eval $(thefuck --alias)
 
 # chmod a+rw /dev/ttyACM*
+
+setxkbmap -option "caps:none"

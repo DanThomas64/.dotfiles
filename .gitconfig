@@ -1,0 +1,16 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = 5899996+DanThomas64@users.noreply.github.com
+	name = Dan Thomas
+[rerere]
+	enabled = true
+	autoUpdate = true
+[core]
+	editor = vim
+[alias]
+	fpush = push

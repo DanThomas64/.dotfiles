@@ -25,6 +25,7 @@ declare -a apps=(
 	deej
 	lazygit
 	google-chrome
+	ripgrep
 )
 
 for app in "${apps[@]}"; do
@@ -106,3 +107,5 @@ fi
 if [[ ! -d "${HOME}/project" ]]; then
 	mkdir "${HOME}/project"
 fi
+
+sudo usermod -a -G uucp $USER

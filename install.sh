@@ -25,7 +25,8 @@ declare -a apps=(
 	deej
 	lazygit
 	ripgrep
-	openoffice
+	openoffice-bin
+	syncthing
 )
 
 for app in "${apps[@]}"; do

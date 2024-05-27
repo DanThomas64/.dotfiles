@@ -27,6 +27,3 @@ eval $(thefuck --alias)
 # chmod a+rw /dev/ttyACM*
 
 # setxkbmap -option "caps:none"
-
-xdg-mime default google-chrome.desktop x-scheme-handler/https x-scheme-handler/http
-

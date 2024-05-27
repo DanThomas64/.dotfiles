@@ -24,8 +24,8 @@ declare -a apps=(
 	youtube-music-bin
 	deej
 	lazygit
-	google-chrome
 	ripgrep
+	openoffice
 )
 
 for app in "${apps[@]}"; do

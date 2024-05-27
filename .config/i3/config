@@ -114,9 +114,6 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# Redirect sound to headphones
-bindsym $mod+p exec /usr/local/bin/switch-audio-port
-
 ## App shortcuts
 bindsym Mod4+e exec /usr/bin/thunar
 bindsym Print exec --no-startup-id scrot ~/Pictures/screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/Pictures/screenshots/$(date +"%Y-%m-%d-%T")-screenshot.png"
@@ -158,9 +155,17 @@ exec --no-startup-id /usr/bin/dunst
 # alternative if you installed aside with XFCE4:
 # exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+
+assign [class="Xfce4-terminal"] $ws1
+assign [class="(?i)firefox"] $ws2
+assign [class="Thunar"] $ws3
+
 # Autostart apps as you like
 exec --no-startup-id sleep 1 && alacritty
-exec --no-startup-id sleep 2 && google-chrome-stable
+exec --no-startup-id sleep 2 && firefox
 exec --no-startup-id sleep 3 && Thunar
 exec --no-startup-id sleep 4 && discord
 exec --no-startup-id sleep 9 &&	youtube-music; workspace 1

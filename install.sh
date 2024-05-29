@@ -25,8 +25,9 @@ declare -a apps=(
 	deej
 	lazygit
 	ripgrep
-	openoffice-bin
+	libreoffice-still
 	syncthing
+	lxinput
 )
 
 for app in "${apps[@]}"; do

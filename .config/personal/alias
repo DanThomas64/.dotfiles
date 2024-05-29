@@ -9,3 +9,5 @@ alias v=vim
 alias vimrc="$VIM $HOME/.config/nvim/"
 alias lg="lazygit"
 alias init_grub="grub-mkconfig -o /boot/grub/grub.cfg"
+alias cat=bat
+

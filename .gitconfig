@@ -7,7 +7,7 @@
 [user]
 	email = 5899996+DanThomas64@users.noreply.github.com
 	name = Dan Thomas
-	signingkey = F6FA93F2DAFAC9D0
+	# signingkey = F6FA93F2DAFAC9D0
 [rerere]
 	enabled = true
 	autoUpdate = true
@@ -16,6 +16,6 @@
 [alias]
 	fpush = push
 [commit]
-	gpgsign = true
+	# gpgsign = true
 [gpg]
 	program = gpg

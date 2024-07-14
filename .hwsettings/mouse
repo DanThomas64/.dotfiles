@@ -2,7 +2,6 @@
 
 gsettings  set  org.gnome.desktop.peripherals.mouse  accel-profile  flat
 
-# xinput --set-prop 20 200 1.2 0 0 0 1 0 0 0 1
 #!/bin/bash
 
 # Find the ID of "Logitech USB Receiver Mouse"
@@ -10,6 +9,13 @@ device_id=$(xinput list | grep "Logitech USB Receiver Mouse" | awk '{print $7}' 
 
 # Check if the device ID is found
 if [ -n "$device_id" ]; then
-    # Apply changes to entry 200
-    xinput set-prop $device_id 200 1.2 0 0 0 1 0 0 0 1
+    # Find the ID of the sense property
+    prop_id=$(xinput list-props $device_id | grep "Coordinate Transformation Matrix" | awk '{print $4}' | sed 's/(//' | sed 's/)://')
+
+    # Check if the prop ID is found
+    if [ -n "$prop_id" ]; then
+        speed=0.8
+        # Apply changes to entry prop
+        xinput set-prop $device_id $prop_id 1 0 0 0 1 0 0 1
+    fi
 fi

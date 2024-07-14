@@ -185,16 +185,19 @@ exec --no-startup-id /usr/bin/dunst
 set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
+set $ws4 "4:"
 
 assign [class="Xfce4-terminal"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="Thunar"] $ws3
+assign [class="steam"] $ws4
 
 # Autostart apps as you like
 exec --no-startup-id sleep 1 && alacritty
 exec --no-startup-id sleep 2 && firefox
 exec --no-startup-id sleep 3 && Thunar
 exec --no-startup-id sleep 4 && discord
+exec --no-startup-id sleep 5 && steam
 exec --no-startup-id sleep 9 &&	youtube-music; workspace 1
 
 ##################

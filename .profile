@@ -26,4 +26,4 @@ eval $(thefuck --alias)
 
 # chmod a+rw /dev/ttyACM*
 
-# setxkbmap -option "caps:none"
+setxkbmap -option "caps:none"

@@ -27,12 +27,15 @@ declare -a apps=(
 	ripgrep
 	libreoffice-still
 	syncthing
-	lxinput
 )
 
 for app in "${apps[@]}"; do
 	yay -S ${app[@]} --noconfirm
 done
+
+# Enable and start the syncthing service for the user
+systemctl enable syncthing.service --user
+systemctl start syncthing.service --user
 
 # Download and deploy dotfile git repo.
 DOTFILES="$HOME/.dotfiles"

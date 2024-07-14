@@ -1,0 +1,4 @@
+HWSETTINGS=$HOME/.hwsettings
+for i in $(find -L $HWSETTINGS); do
+	source $i
+done

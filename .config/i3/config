@@ -5,9 +5,9 @@ include ~/.config/i3/`hostname`.conf
 #######################
 
 # FONT
-font pango: Hack Nerd Font Mono 12
+font pango: Hack Nerd Font Mono 11
 
-# set the mod key to the winkey:
+# set the mod key to the alt (Mod1) or winkey (Mod4):
 set $mod Mod1
 
 # default i3 tiling mode:
@@ -17,8 +17,8 @@ workspace_layout default
 # extra options for windows: #
 ##############################
 
-#border indicator on windows:
-new_window pixel 5
+# Border indicator on windows:
+new_window pixel 4
 
 # Set inner/outer gaps
 gaps inner 3
@@ -201,7 +201,7 @@ for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
 
 # set border of floating window
-for_window [class="urxvt"] border pixel 1
+for_window [class="urxvt"] border pixel 2
 
 ######################################
 # color settings for bar and windows #
@@ -219,10 +219,11 @@ set $darkgrey		#383c4a
 set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
+set $orange		#fa9554
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
+client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$orange
 client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
 client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
 client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
@@ -241,7 +242,7 @@ bindsym $mod+d exec rofi -modi drun -show drun \
 
 # Start i3bar to display a workspace bar
 bar {
-	font pango: Hack Nerd Font Mono 12
+	font pango: Hack Nerd Font Mono 13
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	position bottom
 	tray_padding 0

@@ -27,6 +27,8 @@ declare -a apps=(
 	ripgrep
 	libreoffice-still
 	syncthing
+	acpilight
+	screenkey
 )
 
 for app in "${apps[@]}"; do
@@ -68,9 +70,7 @@ gh repo clone "DanThomas64/nvim.init" $VIMRC
 # Install hack Font
 if fc-match "Hack" &>/dev/null; then
 	declare -a fonts=(
-		Hack
-	)
-
+		Hack)
 	version='3.2.1'
 	fonts_dir="${HOME}/.local/share/fonts"
 
@@ -114,3 +114,4 @@ if [[ ! -d "${HOME}/project" ]]; then
 fi
 
 sudo usermod -a -G uucp $USER
+sudo usermod -a -G video $USER

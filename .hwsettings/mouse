@@ -1,27 +1,39 @@
 #!/usr/bin/env zsh
 
-# Find the ID of "Logitech USB Receiver Mouse"
-device_id=$(xinput list | grep "Logitech USB Receiver Mouse" | awk '{print $7}' | sed 's/id=//')
+devices=( 'Logitech USB Receiver Mouse' 'Logitech G703 LS' )
+sense=( 0.8 0 0 0 0.8 0 0 0 1 )
+accel=( 0 1 0 )
 
-# Check if the device ID is found
-if [ -n "$device_id" ]; then
-    # Find the ID of the sense property
-    sense_prop_id=$(xinput list-props $device_id | grep "Coordinate Transformation Matrix" | awk '{print $4}' | sed 's/(//' | sed 's/)://')
+for device in "${devices[@]}"; do
+    # Find the ID of "Logitech USB Receiver Mouse"
+    echo "Finding new device: ${device[@]}" >> log.txt
+    index=$(echo "${device[@]}" | wc --words )
+    index=$((index + 3))
+    echo "Device id index is $index" >> log.txt
+    device_id=$(xinput list | grep "${device[@]}" | awk -v idx="$index" '{print $idx;exit;}' | sed 's/id=//')
+    echo "Device id: $device_id" >> log.txt
 
+    # Check if the device ID is found
+    if [ -n "$device_id" ]; then
+        # Find the ID of the sense property
+        sense_prop_id=$(xinput list-props $device_id | grep "Coordinate Transformation Matrix" | awk '{print $4}' | sed 's/(//' | sed 's/)://')
+
+        # Check if the prop ID is found
+        if [ -n "$sense_prop_id" ]; then
+            echo "Found sense property and setting new value:" >> log.txt
+            echo ${sense[@]} >> log.txt
+            # Apply changes to entry prop
+            xinput set-prop $device_id $sense_prop_id ${sense[@]} 
+        fi
+
+        # Find the ID of the accel property
+        accel_prop_id=$(xinput list-props $device_id | grep "Accel Profile Enabled (" | awk '{print $5}' | sed 's/(//' | sed 's/)://')
     # Check if the prop ID is found
-    if [ -n "$sense_prop_id" ]; then
-        echo "Found sense property and setting new value"
-        # Apply changes to entry prop
-        xinput set-prop $device_id $sense_prop_id 0.8 0 0 0 0.8 0 0 0 1
-    fi
-
-    # Find the ID of the accel property
-    accel_prop_id=$(xinput list-props $device_id | grep "Accel Profile Enabled (" | awk '{print $5}' | sed 's/(//' | sed 's/)://')
-
-    # Check if the prop ID is found
-    if [ -n "$accel_prop_id" ]; then
-        echo "Found accel property and setting flat profile"
-        # Apply changes to entry prop
-        xinput set-prop $device_id $accel_prop_id 0 1 0
-    fi 
-fi
+        if [ -n "$accel_prop_id" ]; then
+            echo "Found accel property and setting flat profile:" >> log.txt
+            echo ${accel[@]} >> log.txt
+            # Apply changes to entry prop
+            xinput set-prop $device_id $accel_prop_id ${accel[@]}
+        fi 
+    fi;
+done

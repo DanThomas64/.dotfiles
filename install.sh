@@ -29,6 +29,8 @@ declare -a apps=(
 	syncthing
 	acpilight
 	screenkey
+	redshift
+	darktable
 )
 
 for app in "${apps[@]}"; do

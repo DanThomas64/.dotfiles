@@ -98,6 +98,12 @@ bindsym $mod+a focus output primary
 # open new empty workspace
 bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
 
+# send window to scratchpad
+bindsym $mod+Shift+s move scratchpad
+
+# Show scratchpad
+bindsym $mod+Shift+o scratchpad show
+
 # Multimedia Keys
 
 # volume

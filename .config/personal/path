@@ -2,3 +2,5 @@
 
 addToPathFront $HOME/.local/bin
 addToPathFront $HOME/.cargo/bin
+
+addToPathFront $HOME/.local/bin/adb

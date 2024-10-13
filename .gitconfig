@@ -16,3 +16,5 @@
 	fpush = push
 [gpg]
 	program = gpg
+[pull]
+	rebase = false
